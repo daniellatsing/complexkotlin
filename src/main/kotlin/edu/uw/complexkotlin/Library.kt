@@ -9,7 +9,14 @@ package edu.uw.complexkotlin
 // the final string should look like FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZ for 0..15.
 // store this lambda into 'fizzbuzz' so that the tests can call it
 //
-val fizzbuzz : (IntRange) -> String = { "" }
+val fizzbuzz : (IntRange) -> String = { nums -> nums.map {
+    when (it) {
+        it % 3 == 0 && it % 5 == 0 -> "FIZZBUZZ"
+        it % 3 == 0 -> "FIZZ"
+        it % 5 == 0 -> "BUZZ"
+        else -> ""
+    }}.fold("") { acc, i -> acc + i }
+}
 
 // Example usage
 /*
