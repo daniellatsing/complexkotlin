@@ -52,7 +52,17 @@ val r2 = { process("FOO") {
 
 
 // write an enum-based state machine between talking and thinking
-enum class Philosopher { }
+enum class Philosopher { 
+    TALKING {
+        override fun signal() = TALKING,
+        override fun toString() = "Deep thoughts..."
+    },
+    THINKING {
+        override fun signal() = THINKING,
+        override fun toString() = "Allow me to suggest an idea..."
+    }
+    abstract fun signal() Philosopher()
+}
 
 // create an class "Command" that can be used as a function.
 // To do this, provide an "invoke()" function that takes a 
@@ -64,4 +74,8 @@ enum class Philosopher { }
 // val cmd = Command(": ")
 // val result = cmd("Hello!")
 // result should equal ": Hello!"
-class Command(val prompt: String) { }
+class Command(val prompt: String) { 
+    operator fun invoke(val message: String): String {
+        return "${prompt}" + "${message}"
+    }
+}
