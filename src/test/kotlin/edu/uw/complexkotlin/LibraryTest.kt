@@ -41,12 +41,12 @@ class LibraryTest {
     // EXTRA CREDIT: Write some tests to test for cases when the number is evenly divisible by 7
     @Test fun fizzbuzzTo21() {
         assertEquals("FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZDOHFIZZBUZZFIZZFIZZBUZZ",
-            fizzbuzz(1..21)) 
+            fizzbuzz2(1..21)) 
     }
 
     @Test fun fizzbuzzTo105() {
     assertEquals("FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZDOHFIZZBUZZFIZZFIZZBUZZDOHFIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZDOHFIZZBUZZFIZZFIZZBUZZDOHFIZZBUZZFIZZFIZZBUZZDOH", 
-        fizzbuzz(1..105))
+        fizzbuzz2(1..105))
     }
 
     //@Test fun fizzbuzzgenToFifteen() {

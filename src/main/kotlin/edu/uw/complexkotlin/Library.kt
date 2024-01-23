@@ -11,6 +11,15 @@ package edu.uw.complexkotlin
 //
 val fizzbuzz : (IntRange) -> String = { nums -> nums.map {
     when (it) {
+        it % 3 == 0 && it % 5 == 0 -> "FIZZBUZZ"
+        it % 3 == 0 -> "FIZZ"
+        it % 5 == 0 -> "BUZZ"
+        else -> ""
+    }}.fold("") { acc, i -> acc + i }
+}
+
+val fizzbuzz2 : (IntRange) -> String = { nums -> nums.map {
+    when (it) {
         it % 3 == 0 && it % 5 == 0 && it % 7 == 0 -> "FIZZBUZZDOH"
         it % 3 == 0 && it % 5 == 0 -> "FIZZBUZZ"
         it % 3 == 0 && it % 7 == 0 -> "FIZZDOH"
