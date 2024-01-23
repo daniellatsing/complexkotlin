@@ -52,7 +52,7 @@ val r1 = { process("FOO"){"BAR"}}
 val r2_message = "wooga"
 val r2 = { process("FOO") {
     var r2_str = r2_message.toUpperCase().repeat(3)
-} }
+}}
 
 
 // write an enum-based state machine between talking and thinking
