@@ -18,6 +18,7 @@ val fizzbuzz : (IntRange) -> String = { nums -> nums.map {
     }}.fold("") { acc, i -> acc + i }
 }
 
+// EXTRA CREDIT: Introduce DOH! When the number is evenly divisible by 7, return DOH! 
 val fizzbuzz2 : (IntRange) -> String = { nums -> nums.map {
     when (it) {
         it % 3 == 0 && it % 5 == 0 && it % 7 == 0 -> "FIZZBUZZDOH"
