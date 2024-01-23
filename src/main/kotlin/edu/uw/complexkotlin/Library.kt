@@ -11,9 +11,13 @@ package edu.uw.complexkotlin
 //
 val fizzbuzz : (IntRange) -> String = { nums -> nums.map {
     when (it) {
+        it % 3 == 0 && it % 5 == 0 && it % 7 == 0 -> "FIZZBUZZDOH"
         it % 3 == 0 && it % 5 == 0 -> "FIZZBUZZ"
+        it % 3 == 0 && it % 7 == 0 -> "FIZZDOH"
+        it % 5 == 0 && it % 7 == 0 -> "BUZZDOH"
         it % 3 == 0 -> "FIZZ"
         it % 5 == 0 -> "BUZZ"
+        it % 7 == 0 -> "DOH"
         else -> ""
     }}.fold("") { acc, i -> acc + i }
 }
@@ -63,6 +67,12 @@ enum class Philosopher {
     }
     abstract fun signal() Philosopher()
 }
+
+// EXTRA CREDIT: Who was Seneca the Younger, and which school of philosophy is he commonly associated with?
+// Seneca the Younger was a Roman philosopher who is closely associated with 
+// the school of Stoicism as he adapted Stoic ideals to his personal philosophy 
+// and writings through emphasis on virtue, moderation, and self-control over 
+// emotion in pleasure, which led to his influence on Stoicism
 
 // create an class "Command" that can be used as a function.
 // To do this, provide an "invoke()" function that takes a 
