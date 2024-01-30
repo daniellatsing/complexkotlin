@@ -10,7 +10,7 @@ package edu.uw.complexkotlin
 // store this lambda into 'fizzbuzz' so that the tests can call it
 //
 val fizzbuzz : (IntRange) -> String = { nums -> nums.map {
-    when (it) {
+    when {
         it % 3 == 0 && it % 5 == 0 -> "FIZZBUZZ"
         it % 3 == 0 -> "FIZZ"
         it % 5 == 0 -> "BUZZ"
@@ -20,7 +20,7 @@ val fizzbuzz : (IntRange) -> String = { nums -> nums.map {
 
 // EXTRA CREDIT: Introduce DOH! When the number is evenly divisible by 7, return DOH! 
 val fizzbuzz2 : (IntRange) -> String = { nums -> nums.map {
-    when (it) {
+    when {
         it % 3 == 0 && it % 5 == 0 && it % 7 == 0 -> "FIZZBUZZDOH"
         it % 3 == 0 && it % 5 == 0 -> "FIZZBUZZ"
         it % 3 == 0 && it % 7 == 0 -> "FIZZDOH"
@@ -51,7 +51,7 @@ fun Int.times(block: () -> Unit): Unit {
 }
 
 // Use this function
-fun process(message: String, block: (String) -> String): String {
+fun process(message: String, block: (String) -> Unit): String {
     return ">>> ${message}: {" + block(message) + "}"
 }
 // Create r1 as a lambda that calls process() with message "FOO" and a block that returns "BAR"
@@ -61,21 +61,21 @@ val r1 = { process("FOO"){"BAR"}}
 // r2_message, and repeats it three times with no spaces: "WOOGAWOOGAWOOGA"
 val r2_message = "wooga"
 val r2 = { process("FOO") {
-    var r2_str = r2_message.toUpperCase().repeat(3)
+    r2_message.toUpperCase().repeat(3)
 }}
 
 
 // write an enum-based state machine between talking and thinking
 enum class Philosopher { 
     TALKING {
-        override fun signal() = TALKING,
+        override fun signal() = TALKING
         override fun toString() = "Deep thoughts..."
     },
     THINKING {
-        override fun signal() = THINKING,
+        override fun signal() = THINKING
         override fun toString() = "Allow me to suggest an idea..."
-    }
-    abstract fun signal() Philosopher()
+    };
+    abstract fun signal(): Philosopher
 }
 
 // EXTRA CREDIT: Who was Seneca the Younger, and which school of philosophy is he commonly associated with?
@@ -94,8 +94,8 @@ enum class Philosopher {
 // val cmd = Command(": ")
 // val result = cmd("Hello!")
 // result should equal ": Hello!"
-class Command(val prompt: String) { 
-    operator fun invoke(val message: String): String {
+class Command(val prompt: String) {
+    operator fun invoke(message: String): String {
         return "${prompt}" + "${message}"
     }
 }
